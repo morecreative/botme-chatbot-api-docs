@@ -1,17 +1,22 @@
 =========================
 Webhook
 =========================
-you can use th eweb hook to get specific replied from the bot and based on the response 
+.. note::
+
+    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>, <GETSTARTED_PACK_ID> </requirements.html>`_
+
+
+You can use the webhook to get specific replied from the bot and based on the response 
 you will output the user and consist the next post request to the same webhook
 
 
 Get started
 =============
-this is the request body for the get started message
+This is the request body for the get started message
 
 ``Request``
 
-the request contains the poatback type ``get_started`` 
+the request contains the poatback type ``get_started`` make sure you identify our subscribers by a unique identifier in this format ``wb_`` + 16
 
 .. code-block::
 
@@ -22,18 +27,18 @@ the request contains the poatback type ``get_started``
         "entry": [
             {
                 "id": "wb_618819f454881e619a5f91b4",
-                "time": <CURRENT_UNIX_TIMESTAMP>,
+                "time": 1636890098,
                 "messaging": [
                     {
                         "recipient": {
-                            "id": "wb_618819f454881e619a5f91b4"
+                            "id": "<CID>"
                         },
-                        "timestamp": <CURRENT_UNIX_TIMESTAMP>,
+                        "timestamp": 1636890098,
                         "sender": {
                             "id": "wb_BFzqMY5txPsbGTEw1LABDpM4W"
                         },
                         "postback": {
-                            "payload": "{\"type\":\"get_started\",\"botId\":28718,\"packId\":\"db5640826a713b10b5cb2c4d27b9e5a7\"}",
+                            "payload": "{\"type\":\"get_started\",\"botId\":<BOT_ID>,\"packId\":\"<GETSTARTED_PACK_ID>\"}",
                             "title": "Get Started"
                         }
                     }
@@ -111,7 +116,7 @@ we explain the payload in more details.
 
     {
         "payload": "english60800f1a573a9",
-        "botId": <BOT_ID>,
+        "botId": "<BOT_ID>",
         "value": "<BUTTON TEXT CONTENT>",
         "next_pack": "<PACK_ID>",
         "button_type": "post_back",

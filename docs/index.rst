@@ -11,6 +11,8 @@ Welcome to Botme's documentation!
    :caption: Contents:
 
 .. toctree::
+
+   requirements.rst
    webhook.rst
    presistent_menu.rst
 
