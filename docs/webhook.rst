@@ -3,7 +3,7 @@ Webhook
 =========================
 .. note::
 
-    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>, <GETSTARTED_PACK_ID> </requirements.html>`_
+    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>,  </requirements.html>`_
 
 
 You can use the webhook to get specific replied from the bot and based on the response 
@@ -12,7 +12,8 @@ you will output the user and consist the next post request to the same webhook
 
 Get started
 =============
-This is the request body for the get started message
+This is the request body for the get started message sending this request will simulate clicking on 
+the ``Get Started`` Button in the conversation note you should send this request in the start of the conversation
 
 ``Request``
 
@@ -47,50 +48,9 @@ the request contains the poatback type ``get_started`` make sure you identify ou
         ],
         "preview": true
     }'
+..
 
-``Response``
-
-the response is a message with two buttons like in the image below remember you will use each button payload 
-to build the new payload to the same `webhook`_ request
-
-.. _webhook: /webhook.html
-
-.. image:: _static/images/get_started.*
-
-.. code-block::
-
-    {
-        "messages": [
-            {
-                "messaging_type": "RESPONSE",
-                "recipient": {
-                    "id": 0
-                },
-                "message": {
-                    "attachment": {
-                        "type": "template",
-                        "payload": {
-                            "template_type": "button",
-                            "text": "Choose your language \\ أختر اللغة ",
-                            "buttons": [
-                                {
-                                    "title": "English",
-                                    "type": "postback",
-                                    "payload": "{\"payload\":\"english60800f1a573a9\",\"botId\":<BOT_ID>,\"value\":\"English\",\"next_pack\":\"8d0f593b79be3c20acaaf388fd29845d\",\"button_type\":\"post_back\",\"button_id\":\"5f9ee977e7757f294855e063\"}"
-                                },
-                                {
-                                    "title": "العربية",
-                                    "type": "postback",
-                                    "payload": "{\"payload\":\"\\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u062960800f1a574cc\",\"botId\":<BOT_ID>,\"value\":\"\\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u0629\",\"next_pack\":\"5d635f30f7bd33adb3f58456f1071530\",\"button_type\":\"post_back\",\"button_id\":\"5f9ee977e7757f294855e064\"}"
-                                }
-                            ]
-                        }
-                    }
-                },
-                "typing": 0
-            }
-        ]
-    }
+Response can be different based on the conversation flow look at `Message Types </message_types.html>`
 
 
 Payload explained

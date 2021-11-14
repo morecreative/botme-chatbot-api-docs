@@ -14,6 +14,7 @@ Welcome to Botme's documentation!
 
    requirements.rst
    webhook.rst
+   message_types.rst
    presistent_menu.rst
 
 Indices and tables
