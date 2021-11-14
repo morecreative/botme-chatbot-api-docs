@@ -10,11 +10,12 @@ Welcome to Botme's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+.. toctree::
+   webhook.rst
+   presistent_menu.rst
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`

@@ -1,3 +1,6 @@
+import alabaster
+
+html_theme_path = [alabaster.get_path()]
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.
@@ -99,13 +102,6 @@ html_static_path = ['_static']
 # 'searchbox.html']``.
 #
 html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'relations.html',
-        'searchbox.html',
-        'donate.html',
-    ]
 }
 
 
