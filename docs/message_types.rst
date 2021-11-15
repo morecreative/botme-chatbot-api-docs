@@ -31,9 +31,9 @@ Text message content that the bot can reply with
         ]
     }
 
-Text With Buttons
+Text with buttons
 =============
-the response is a message with two buttons like in the image below, remember you will use each button payload 
+The response is a message with two buttons like in the image below, remember you will use each button payload 
 to build the new payload to the same `webhook </webhook.html>`_ request
 
 .. note::
@@ -77,9 +77,9 @@ to build the new payload to the same `webhook </webhook.html>`_ request
         ]
     }
 
-Text With Quick Replies
+Text with quick replies
 =============
-the response is a text message with two quick replies like in the image below, remember you will use each quick-reply payload 
+The response is a text message with two quick replies like in the image below, remember you will use each quick-reply payload 
 to build the new payload to the same `webhook </webhook.html>`_ request
 
 .. note::
@@ -120,7 +120,7 @@ to build the new payload to the same `webhook </webhook.html>`_ request
         ]
     }
 
-Media
+Media type
 =============
 
 This is the media type response the media can be image or video.
@@ -156,7 +156,7 @@ This is the media type response the media can be image or video.
     }
 
 
-Carosel
+Carosel type
 =============
 The carosel card may be up to 10 cards items and the buttons on each card can be maximum 3 
 
