@@ -3,7 +3,7 @@ Webhook
 =========================
 .. note::
 
-    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>,  </requirements.html>`_
+    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>,<GETSTARTED_PACK_ID>  </requirements.html>`_
 
 
 You can use the webhook to get specific replied from the bot and based on the response 
@@ -23,34 +23,37 @@ the request contains the poatback type ``get_started`` make sure you identify ou
 
     curl --location --request POST 'https://messenger.botme.com/webhook' \
     --header 'Content-Type: application/json' \
+    --header 'Referer: https://www.botme.com/' \
     --data-raw '{
-        "object": "web",
-        "entry": [
-            {
-                "id": "wb_618819f454881e619a5f91b4",
-                "time": 1636890098,
-                "messaging": [
-                    {
-                        "recipient": {
-                            "id": "<CID>"
-                        },
-                        "timestamp": 1636890098,
-                        "sender": {
-                            "id": "wb_BFzqMY5txPsbGTEw1LABDpM4W"
-                        },
-                        "postback": {
-                            "payload": "{\"type\":\"get_started\",\"botId\":<BOT_ID>,\"packId\":\"<GETSTARTED_PACK_ID>\"}",
-                            "title": "Get Started"
+            "object": "web",
+            "entry": [
+                {
+                    "id": "<CID>",
+                    "time": 1636890098,
+                    "messaging": [
+                        {
+                            "recipient": {
+                                "id": "<CID>"
+                            },
+                            "timestamp": 1636890098,
+                            "sender": {
+                                "id": "<SENDER_ID>"
+                            },
+                            "postback": {
+                                "payload": "{\"type\":\"get_started\",\"botId\":<BOT_ID>,\"packId\":\"<GETSTARTED_PACK_ID>\"}",
+                                "title": "Get Started"
+                            }
                         }
-                    }
-                ]
-            }
-        ],
-        "preview": true
-    }'
+                    ]
+                }
+            ],
+            "preview": true
+        }'
 ..
 
-Response can be different based on the conversation flow look at `Message Types </message_types.html>`
+.. note::
+
+    **Response can be different based on the conversation flow look at**  `Message Types </message_types.html>`_
 
 
 Payload explained
