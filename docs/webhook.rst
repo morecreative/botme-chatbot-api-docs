@@ -23,7 +23,7 @@ the request contains the poatback type ``get_started`` make sure you identify ou
 
     curl --location --request POST 'https://messenger.botme.com/webhook' \
     --header 'Content-Type: application/json' \
-    --header 'Referer: https://www.botme.com/' \
+    --header 'Referer: <YOUR_WEBSITE_DOMAIN: exp : https://www.botme.com>' \
     --data-raw '{
             "object": "web",
             "entry": [
@@ -47,7 +47,8 @@ the request contains the poatback type ``get_started`` make sure you identify ou
                     ]
                 }
             ],
-            "preview": true
+            "preview": false,
+            "channelType": "plugin"
         }'
 ..
 
@@ -66,11 +67,7 @@ also you can replace ``BUTTON_PAYLOAD_VALUE`` and ``BUTTON_TITLE`` by the payloa
     curl --request POST \
     --url https://messenger.botme.com/webhook \
     --header 'Content-Type: application/json' \
-    --header 'Referer: https://www.botme.com/' \
-    --header 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36' \
-    --header 'sec-ch-ua: "Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"' \
-    --header 'sec-ch-ua-mobile: ?0' \
-    --header 'sec-ch-ua-platform: "Linux"' \
+    --header 'Referer: <YOUR_WEBSITE_DOMAIN: exp : https://www.botme.com>' \
     --data '{
         "object": "web",
         "entry": [
@@ -94,7 +91,8 @@ also you can replace ``BUTTON_PAYLOAD_VALUE`` and ``BUTTON_TITLE`` by the payloa
                 ]
             }
         ],
-        "preview": true
+        "preview": false,
+        "channelType": "plugin"
     }'
 
 Quick reply request
@@ -105,13 +103,8 @@ also you can replace ``QUICK_REPLY_PAYLOAD`` and ``QUICK_REPLY_TEXT`` by the pay
 .. code-block::
 
     curl --location --request POST 'https://messenger.botme.com/webhook' \
-    --header 'Connection: keep-alive' \
-    --header 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36' \
     --header 'Content-Type: application/json' \
-    --header 'Accept: */*' \
-    --header 'Origin: https://www.botme.com' \
-    --header 'Referer: https://www.botme.com/' \
-    --header 'Accept-Language: en-US,en;q=0.9' \
+    --header 'Referer: <YOUR_WEBSITE_DOMAIN: exp : https://www.botme.com>' \
     --data-raw '{
         "object": "web",
         "entry": [
@@ -135,7 +128,8 @@ also you can replace ``QUICK_REPLY_PAYLOAD`` and ``QUICK_REPLY_TEXT`` by the pay
                 ]
             }
         ],
-        "preview": true
+        "preview": false,
+        "channelType": "plugin"
     }'
 
 Payload explained
