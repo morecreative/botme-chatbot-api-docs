@@ -10,6 +10,8 @@ First you need these data to interact with the bot from your application, please
 
 ``<GETSTARTED_PACK_ID>`` the starter request simulate clicking on the ``Get Started`` button in the bot
 
+``<YOUR_WEBSITE_DOMAIN>`` your website domain name needed in the refere of some request.
+
 ``<SENDER_ID>`` this should be random generated code for each person talking to the bot 
 
     .. warning::

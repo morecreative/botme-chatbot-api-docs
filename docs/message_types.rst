@@ -214,3 +214,53 @@ The carosel card may be up to 10 cards items and the buttons on each card can be
             }
         ]
     }
+
+Typing message
+=============
+The typing message looks like the image below this json should display ``Hi`` text then wait 5 seconds and then type ``Hi again``
+
+.. note::
+
+    you should handle the typing load in your app if you found this json inside the `webhook request </webhook.html>`_
+
+.. image:: _static/images/typing.*
+
+.. code-block::
+
+    {
+        "messages": [
+            {
+                "messaging_type": "RESPONSE",
+                "recipient": {
+                    "id": 0
+                },
+                "message": {
+                    "text": "Hi",
+                    "quick_replies": []
+                },
+                "typing": 0
+            },
+            {
+                "messaging_type": "RESPONSE",
+                "recipient": {
+                    "id": 0
+                },
+                "message": {
+                    "duration": 5,
+                    "type": "typing"
+                },
+                "typing": 0
+            },
+            {
+                "messaging_type": "RESPONSE",
+                "recipient": {
+                    "id": 0
+                },
+                "message": {
+                    "text": "Hi again",
+                    "quick_replies": []
+                },
+                "typing": 0
+            }
+        ]
+    }

@@ -132,6 +132,41 @@ also you can replace ``QUICK_REPLY_PAYLOAD`` and ``QUICK_REPLY_TEXT`` by the pay
         "channelType": "plugin"
     }'
 
+Data input request
+=============
+This request will simulate the sending text message to the bot.
+
+
+.. code-block::
+
+    curl --location --request POST 'https://messenger.botme.com/webhook' \
+    --header 'Content-Type: application/json' \
+    --header 'Referer: <YOUR_WEBSITE_DOMAIN: exp : https://www.botme.com>' \
+    --data-raw '{
+        "object": "web",
+        "entry": [
+            {
+                "id": "<CID>",
+                "time": 1551626486065,
+                "messaging": [
+                    {
+                        "recipient": {
+                            "id": "<CID>"
+                        },
+                        "timestamp": 1551626486065,
+                        "sender": {
+                            "id": "<SENDER_ID>"
+                        },
+                        "message": {
+                            "text": "Hi"
+                        }
+                    }
+                ]
+            }
+        ],
+        "preview": true
+    }'
+
 Payload explained
 =============
 
