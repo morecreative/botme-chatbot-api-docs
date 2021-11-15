@@ -3,7 +3,7 @@ Webhook
 =========================
 .. note::
 
-    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>,<GETSTARTED_PACK_ID>  </requirements.html>`_
+    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>,<GETSTARTED_PACK_ID>  <requirements.html>`_
 
 
 You can use the webhook to get specific replied from the bot and based on the response 
@@ -54,12 +54,12 @@ the request contains the poatback type ``get_started`` make sure you identify ou
 
 .. note::
 
-    **Response can be different based on the conversation flow look at**  `Message Types </message_types.html>`_
+    **Response can be different based on the conversation flow look at**  `Message Types <message_types.html>`_
 
 
 Button request
-=============
-from `Buton With Text </message_types.html#text-with-buttons>`_ section you can simulate the click on any button using this request
+===============
+from `Buton With Text <message_types.html#text-with-buttons>`_ section you can simulate the click on any button using this request
 also you can replace ``BUTTON_PAYLOAD_VALUE`` and ``BUTTON_TITLE`` by the payload and button text user has selected.
 
 .. code-block::
@@ -96,8 +96,8 @@ also you can replace ``BUTTON_PAYLOAD_VALUE`` and ``BUTTON_TITLE`` by the payloa
     }'
 
 Quick reply request
-=============
-from `Buton with quick reply <//message_types.html#text-with-quick-replies>`_ section you can simulate the click on any quick reply using this request,
+====================
+from `Buton with quick reply <message_types.html#text-with-quick-replies>`_ section you can simulate the click on any quick reply using this request,
 also you can replace ``QUICK_REPLY_PAYLOAD`` and ``QUICK_REPLY_TEXT`` by the payload and text user has selected.
 
 .. code-block::
@@ -133,7 +133,7 @@ also you can replace ``QUICK_REPLY_PAYLOAD`` and ``QUICK_REPLY_TEXT`` by the pay
     }'
 
 Data input request
-=============
+===================
 This request will simulate the sending text message to the bot.
 
 
@@ -169,7 +169,7 @@ This request will simulate the sending text message to the bot.
     }'
 
 Payload explained
-=============
+==================
 
 you will deal alot with the payload for button/quick-reply so in this chapter 
 we explain the payload in more details.

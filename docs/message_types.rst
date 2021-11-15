@@ -6,7 +6,7 @@ Message Types
 
     Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>, <GETSTARTED_PACK_ID> </requirements.html>`_
 
-this requests can be one of the responses from `webhook </webhook.html>`_
+this requests can be one of the responses from `webhook <webhook.html>`_
 
 Text message
 =============
@@ -34,7 +34,7 @@ Text message content that the bot can reply with
 Text with buttons
 =============
 The response is a message with two buttons like in the image below, remember you will use each button payload 
-to build the new payload to the same `webhook </webhook.html>`_ request
+to build the new payload to the same `webhook <webhook.html>`_ request
 
 .. note::
 
@@ -80,7 +80,7 @@ to build the new payload to the same `webhook </webhook.html>`_ request
 Text with quick replies
 =============
 The response is a text message with two quick replies like in the image below, remember you will use each quick-reply payload 
-to build the new payload to the same `webhook </webhook.html>`_ request
+to build the new payload to the same `webhook <webhook.html>`_ request
 
 .. note::
 
@@ -221,7 +221,7 @@ The typing message looks like the image below this json should display ``Hi`` te
 
 .. note::
 
-    you should handle the typing load in your app if you found this json inside the `webhook request </webhook.html>`_
+    you should handle the typing load in your app if you found this json inside the `webhook request <webhook.html>`_
 
 .. image:: _static/images/typing.*
 

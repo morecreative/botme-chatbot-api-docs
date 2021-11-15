@@ -3,7 +3,7 @@ Persistent Menu
 =========================
 .. note::
 
-    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>, <GETSTARTED_PACK_ID> </requirements.html>`_
+    Make sure you put the correct values for `<BOT_ID>, <CID>, <SENDER_ID>, <GETSTARTED_PACK_ID> <requirements.html>`_
 
 .. image:: _static/images/presistent_menu.*
 
@@ -11,8 +11,7 @@ Persistent Menu
 You can use this request to fetch the persistent menu for the bot then use 
 the `webhook`_ endpoint to build the request based on user selection from the menu
 
-.. _webhook: /webhook.html
-.. requirements: /requirements.html
+.. _webhook: webhook.html
 
 Request
 -------------
