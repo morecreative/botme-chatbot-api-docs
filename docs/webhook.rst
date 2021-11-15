@@ -164,7 +164,8 @@ This request will simulate the sending text message to the bot.
                 ]
             }
         ],
-        "preview": true
+        "preview": false,
+        "channelType": "plugin"
     }'
 
 Payload explained
