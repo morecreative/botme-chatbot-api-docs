@@ -1,15 +1,26 @@
 =============
 Json Plugin
 =============
-In This section you will learn more about botme json plugin how to structure your response and build your endpoint
+The JSON API plugin allows you to integrate your backend into your chatbots in Chatfuel.
+
+The JSON API plugin enables your bot to send HTTP GET and POST requests and interpret responses.
+
+**You can:**
+    - Generate dynamic content.
+    - Create postbacks.
+    - Redirect to external URL.
+
+**Json composer**
+you can find the json composer in the build mode under ``Add Content`` Block.
 
 .. image:: _static/images/json_composer.*
 
+In your responses, you can: combine several messages in one answer by sending several dictionaries in the messages array.
 
-Build you endpoint 
+Build your endpoint 
 ===================
 You can find the ``JSON API`` composer on the build mode, you can choose the type of the request if 
-it is ``GET`` or ``POST`` and you have the fexibility to choose a token if you want you endpoint to be secured.
+it is ``GET`` or ``POST`` and you have the fexibility to choose a token if you want your endpoint to be secured.
 
 also you can click on ``Add Query Param +`` button so ask the user for input from the bot 
 enter the 
@@ -20,19 +31,89 @@ enter the
 so imagine you endpoint is ``/webhook/bot`` and it is available under ``GET`` method 
 so your endpoint should make one of the next responses so the bot can respond to your channel(messenger, whatsapp, webbot, etc)
 
-Text message Response
-=======================
-Your endpoint response should be in this format 
+Response Examples
+==================
+    
+    .. rubric:: Text message Response
 
-.. code-block::
+    Use this response to send text messages.
+
+    .. rubric::
+
+            {
+                messages : [
+                    {
+                        message: {
+                            text: "Hello Botme"
+                        }
+                    }
+                ]
+            }
+
+    .. rubric:: Sending images
+    
+    Use this response to send image files. Messenger supports JPG, PNG and GIF images. If you are having issues with GIF rendering, 
+    please try to reduce the file size.
+    
+    .. rubric::
 
         {
-            messaging_type: "RESPONSE",
-            message: {
-                text: "Hi There"
-            }
+            messages : [
+                {
+                    messaging_type: "RESPONSE",
+                    message: {
+                        attachment: {
+                            type: "template",
+                            payload: {
+                                template_type: "media",
+                                elements: [
+                                    {
+                                        media_type: "image",
+                                        url: "https://picsum.photos/200/300"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
         }
 
-you can open Test the bot on the platform or start talking to your bot so you can get the response commng from your api.
-
+    .. rubric:: Text with buttons response 
     
+    Buttons on specific text  in this response type can be one of 
+    .. code-block::
+
+        {
+            "messages": [
+                {
+                    "messaging_type": "RESPONSE",
+                    "recipient": {
+                        "id": 0
+                    },
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "button",
+                                "text": "Choose your language \\ أختر اللغة ",
+                                "buttons": [
+                                    {
+                                        "title": "English",
+                                        "type": "postback",
+                                        "payload": "{\"payload\":\"<BUTTON_PAYLOAD>\",\"botId\":<BOT_ID>,\"value\":\"English\",\"next_pack\":\"<UNIQU_PACK_IDENTIFIER>\",\"button_type\":\"post_back\",\"button_id\":\"BUTTON_ID\"}"
+                                    },
+                                    {
+                                        "title": "العربية",
+                                        "type": "postback",
+                                        "payload": "{\"payload\":\"<BUTTON_PAYLOAD>\",\"botId\":<BOT_ID>,\"value\":\"\\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u0629\",\"next_pack\":\"<UNIQU_PACK_IDENTIFIER>\",\"button_type\":\"post_back\",\"button_id\":\"<BUTTON_ID>\"}"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+
+        Sending images
