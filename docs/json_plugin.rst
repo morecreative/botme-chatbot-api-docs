@@ -38,6 +38,8 @@ Response Examples
 
     Use this response to send text messages.
 
+    .. image:: _static/images/json/text_message.*
+
     .. code-block::
 
             {
@@ -53,6 +55,8 @@ Response Examples
     .. rubric:: Typing message
 
     You can send this message to let content have a delay before displaying some messages
+
+    .. image:: _static/images/json/typing_message.*
 
     .. code-block::
 
@@ -79,60 +83,66 @@ Response Examples
 
     .. rubric:: Text with buttons 
     
-    Buttons on specific text  in this response type can be one of 
+    Buttons on specific text  in this response type can be one of
+
+    .. image:: _static/images/json/text_with_button.*
+
     .. code-block::
 
         {
             "messages": [
                 {
-                    "messaging_type": "RESPONSE",
-                    "recipient": {
-                        "id": 0
-                    },
                     "message": {
                         "attachment": {
                         "type": "template",
                         "payload": {
-                            "template_type": "button",
-                            "text": "Choose your language \\ أختر اللغة ",
-                            "buttons": [
-                            {
-                                "title": "English",
-                                "type": "postback",
-                                "payload": {
-                                "payload": "<BUTTON_PAYLOAD>",
-                                "botId": <BOT_ID>,
-                                "value": "english",
-                                "next_pack": "<UNIQU_PACK_IDENTIFIER>",
-                                "button_type": "post_back",
-                                "button_id": "<BUTTON_ID>"
-                                }
-                            },
-                            {
-                                "title": "Arabic",
-                                "type": "postback",
-                                "payload": {
-                                "payload": "<BUTTON_PAYLOAD>",
-                                "botId": <BOT_ID>,
-                                "value": "arabic",
-                                "next_pack": "<UNIQU_PACK_IDENTIFIER>",
-                                "button_type": "post_back",
-                                "button_id": "<BUTTON_ID>"
-                                }
+                                "template_type": "button",
+                                "text": "Three button type url, phone, postback",
+                                "buttons": [
+                                    {
+                                        "title": "go to botme.com",
+                                        "type": "web_url",
+                                        "url": "http://botme.com"
+                                    },
+                                    {
+                                        "title": "call 911",
+                                        "type": "phone_number",
+                                        "payload": "+2911"
+                                    },
+                                    {
+                                        "title": "Go to pack test",
+                                        "type": "postback",
+                                        "payload": {
+                                            "payload": "go to pack <PACK_HASH>",
+                                            "botId": <BOT_ID>,
+                                            "value": "Go to pack test",
+                                            "next_pack": "<PACK_ID>",
+                                            "button_type": "post_back",
+                                            "button_id": "<BUTON_ID>"
+                                        }
+                                    }
+                                ]
                             }
-                            ]
-                        }
                         }
                     }
                 }
             ]
-            }
+        }
+    
+    You have three button types
+    
+    - ``web_url`` to make the button goes to external url
+    - ``phone_number`` will open the dialing panel on your device
+    - ``postback`` for more information `webhook <json_plugin.html#postback-response>`_
+
 
     .. rubric:: Sending images
     
     Use this response to send image files. Messenger supports JPG, PNG and GIF images. If you are having issues with GIF rendering, 
     please try to reduce the file size.
     
+    .. image:: _static/images/json/image_message.*
+
     .. code-block::
 
         {
@@ -161,6 +171,8 @@ Response Examples
 
     Use this response to send a horizontal scrollable gallery. Each item is composed of an image attachment, short description and buttons to request input from the user.
 
+    .. image:: _static/images/json/gallary_message.*
+
     .. code-block::
 
         {
@@ -179,9 +191,9 @@ Response Examples
                             "type": "element",
                             "subtitle": "Card #1 Subtitle",
                             "default_action": {
-                            "type": "web_url",
-                            "url": "https://botme.com",
-                            "webview_height_ratio": "TALL"
+                                "type": "web_url",
+                                "url": "https://botme.com",
+                                "webview_height_ratio": "TALL"
                             },
                             "buttons": [
                             {
@@ -238,6 +250,9 @@ Response Examples
     The Gallary can be up to 10 cards usualy people use it as 9 items and the card no 10 would be for the see more items.
 
     .. rubric:: Sending list
+
+    .. image:: https://scontent.fcai19-4.fna.fbcdn.net/v/t39.2365-6/21274842_1998857677000635_328116182651502592_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ad8a9d&_nc_aid=0&_nc_ohc=LdXpccXStCcAX-BFUHn&_nc_ht=scontent.fcai19-4.fna&oh=08e475c665f0011a564654414c7226b1&oe=61A1703B
+        :width: 200
 
     .. code-block::
 
@@ -308,43 +323,39 @@ Response Examples
 
     Use this JSON to add quick replies to your responses. Quick replies are limited to 11 items per message.
 
+    .. image:: _static/images/json/quick_reply.*
+
     .. code-block::
 
         {
-            messages: [
+            "messages": [
                 {
-                message: {
-                    text: "Hello this is a text with quickreply",
-                    quick_replies: [
-                    {
-                        content_type: "text",
-                        title: "quickreply #1",
-                        payload: {
-                            payload: {
-                            type: "quick_reply",
-                            custom_attribute: null,
-                            value: "quickreply #1"
-                            },
-                            button_type: "quick_reply",
-                        }
-                    },
-                    {
-                        content_type: "text",
-                        title: "quickreply #2",
-                        payload: {
-                            payload: {
-                                type: "quick_reply",
-                                custom_attribute: null,
-                                value: "quickreply #2"
-                            },
-                            button_type: "quick_reply"
-                        }
+                    "messaging_type": "RESPONSE",
+                    "message": {
+                        "text": "test quick reply",
+                        "quick_replies": [
+                            {
+                                "content_type": "text",
+                                "title": "Go to pack test",
+                                "payload": {
+                                    "payload": {
+                                        "type": "quick_reply",
+                                        "key": "<QUICK_REPLY_KEY>",
+                                        "custom_attribute": null,
+                                        "value": "Go to pack test"
+                                    },
+                                    "next_pack":"<QUICK_REPLY_NEXT_PACK>",
+                                    "button_type":"quick_reply",
+                                    "button_id":"<QUICK_REPLY_BUTTON_ID>"
+                                }
+                            }
+                        ]
                     }
-                    ]
-                }
                 }
             ]
         }
+
+    Please contact the support at ``hello@botme.com`` to guide you throw how to get these values ``<QUICK_REPLY_KEY>``, ``<QUICK_REPLY_NEXT_PACK>``, ``<QUICK_REPLY_BUTTON_ID>``
         
     .. rubric:: Sending multiple messages
         
@@ -382,3 +393,42 @@ Response Examples
                 }
             ]
         }
+
+Postback response
+==================
+
+You can use this button type to make the conversation go to customized pack on the buildmode at `botme.com <https://www.botme.com>`_.
+
+.. code-block::
+
+    {
+        "messages": [
+            {
+                "message": {
+                    "attachment": {
+                    "type": "template",
+                    "payload": {
+                            "template_type": "button",
+                            "text": "Postback button type postback",
+                            "buttons": [
+                                {
+                                    "title": "Go to pack test",
+                                    "type": "postback",
+                                    "payload": {
+                                        "payload": "go to pack <PACK_HASH>",
+                                        "botId": <BOT_ID>,
+                                        "value": "Go to pack test",
+                                        "next_pack": "<PACK_ID>",
+                                        "button_type": "post_back",
+                                        "button_id": "<BUTON_ID>"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ]
+    }
+
+Please contact the support at ``hello@botme.com`` to guide you throw how to get these values ``<PACK_HASH>``, ``<BOT_ID>``, ``<PACK_ID>``, ``<BUTON_ID>`` 
