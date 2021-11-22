@@ -16,6 +16,7 @@ Welcome to Botme's documentation!
    webhook.rst
    message_types.rst
    presistent_menu.rst
+   json_plugin.rst
 
 Indices and tables
 ==================
