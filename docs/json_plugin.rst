@@ -34,52 +34,50 @@ so your endpoint should make one of the next responses so the bot can respond to
 Response Examples
 ==================
     
-    .. rubric:: Text message Response
+    .. rubric:: Text message
 
     Use this response to send text messages.
 
-    .. rubric::
+    .. code-block::
 
             {
-                messages : [
+                "messages" : [
                     {
-                        message: {
-                            text: "Hello Botme"
+                        "message": {
+                            "text": "Hello Botme"
                         }
                     }
                 ]
             }
 
-    .. rubric:: Sending images
-    
-    Use this response to send image files. Messenger supports JPG, PNG and GIF images. If you are having issues with GIF rendering, 
-    please try to reduce the file size.
-    
-    .. rubric::
+    .. rubric:: Typing message
+
+    You can send this message to let content have a delay before displaying some messages
+
+    .. code-block::
 
         {
-            messages : [
+            "messages": [
                 {
-                    messaging_type: "RESPONSE",
-                    message: {
-                        attachment: {
-                            type: "template",
-                            payload: {
-                                template_type: "media",
-                                elements: [
-                                    {
-                                        media_type: "image",
-                                        url: "https://picsum.photos/200/300"
-                                    }
-                                ]
-                            }
-                        }
+                    "message": {
+                        "text": "I will wait 6 seconds then send Hi"
+                    }
+                },
+                {
+                    "message": {
+                        "duration": 6,
+                        "type": "typing"
+                    },
+                },
+                {
+                    "message": {
+                        "text": "Hi",
                     }
                 }
             ]
         }
 
-    .. rubric:: Text with buttons response 
+    .. rubric:: Text with buttons 
     
     Buttons on specific text  in this response type can be one of 
     .. code-block::
@@ -93,20 +91,63 @@ Response Examples
                     },
                     "message": {
                         "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "button",
+                            "text": "Choose your language \\ أختر اللغة ",
+                            "buttons": [
+                            {
+                                "title": "English",
+                                "type": "postback",
+                                "payload": {
+                                "payload": "<BUTTON_PAYLOAD>",
+                                "botId": <BOT_ID>,
+                                "value": "english",
+                                "next_pack": "<UNIQU_PACK_IDENTIFIER>",
+                                "button_type": "post_back",
+                                "button_id": "<BUTTON_ID>"
+                                }
+                            },
+                            {
+                                "title": "Arabic",
+                                "type": "postback",
+                                "payload": {
+                                "payload": "<BUTTON_PAYLOAD>",
+                                "botId": <BOT_ID>,
+                                "value": "arabic",
+                                "next_pack": "<UNIQU_PACK_IDENTIFIER>",
+                                "button_type": "post_back",
+                                "button_id": "<BUTTON_ID>"
+                                }
+                            }
+                            ]
+                        }
+                        }
+                    }
+                }
+            ]
+            }
+
+    .. rubric:: Sending images
+    
+    Use this response to send image files. Messenger supports JPG, PNG and GIF images. If you are having issues with GIF rendering, 
+    please try to reduce the file size.
+    
+    .. code-block::
+
+        {
+            "messages" : [
+                {
+                    "messaging_type": "RESPONSE",
+                    "message": {
+                        "attachment": {
                             "type": "template",
                             "payload": {
-                                "template_type": "button",
-                                "text": "Choose your language \\ أختر اللغة ",
-                                "buttons": [
+                                "template_type": "media",
+                                "elements": [
                                     {
-                                        "title": "English",
-                                        "type": "postback",
-                                        "payload": "{\"payload\":\"<BUTTON_PAYLOAD>\",\"botId\":<BOT_ID>,\"value\":\"English\",\"next_pack\":\"<UNIQU_PACK_IDENTIFIER>\",\"button_type\":\"post_back\",\"button_id\":\"BUTTON_ID\"}"
-                                    },
-                                    {
-                                        "title": "العربية",
-                                        "type": "postback",
-                                        "payload": "{\"payload\":\"<BUTTON_PAYLOAD>\",\"botId\":<BOT_ID>,\"value\":\"\\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u0629\",\"next_pack\":\"<UNIQU_PACK_IDENTIFIER>\",\"button_type\":\"post_back\",\"button_id\":\"<BUTTON_ID>\"}"
+                                        "media_type": "image",
+                                        "url": "https://picsum.photos/200/300"
                                     }
                                 ]
                             }
@@ -116,4 +157,228 @@ Response Examples
             ]
         }
 
-        Sending images
+    .. rubric:: Sending galleries
+
+    Use this response to send a horizontal scrollable gallery. Each item is composed of an image attachment, short description and buttons to request input from the user.
+
+    .. code-block::
+
+        {
+            "messages": [
+                {
+                "message": {
+                    "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "image_aspect_ratio": "square",
+                        "elements": [
+                        {
+                            "title": "Card #1",
+                            "image_url": "https://picsum.photos/200/300",
+                            "type": "element",
+                            "subtitle": "Card #1 Subtitle",
+                            "default_action": {
+                            "type": "web_url",
+                            "url": "https://botme.com",
+                            "webview_height_ratio": "TALL"
+                            },
+                            "buttons": [
+                            {
+                                "title": "Visit Botme",
+                                "type": "url",
+                                "url": "https://botme.com",
+                                "fb_type": "web_url"
+                            },
+                            {
+                                "title": "Visit Botme shops",
+                                "type": "url",
+                                "url": "https://shops.botme.com",
+                                "fb_type": "web_url"
+                            }
+                            ]
+                        },
+                        {
+                            "title": "Card #2",
+                            "image_url": "https://picsum.photos/200/300",
+                            "type": "element",
+                            "subtitle": "Card #2 Subtitle",
+                            "default_action": {
+                            "type": "web_url",
+                            "url": "https://botme.com",
+                            "webview_height_ratio": "TALL"
+                            },
+                            "buttons": [
+                            {
+                                "title": "Visit Botme #2",
+                                "type": "url",
+                                "url": "https://botme.com",
+                                "fb_type": "web_url"
+                            },
+                            {
+                                "title": "Visit Botme shops #2",
+                                "type": "url",
+                                "url": "https://shops.botme.com",
+                                "fb_type": "web_url"
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    }
+                }
+                }
+            ]
+        }
+
+    The ``image_aspect_ratio`` can be either ``square`` or ``horizontal``. Horizontal is the default.
+
+    The ``webview_height_ratio`` ca be ``COMPACT`` or  ``TALL`` or ``FULL``
+
+    The Gallary can be up to 10 cards usualy people use it as 9 items and the card no 10 would be for the see more items.
+
+    .. rubric:: Sending list
+
+    .. code-block::
+
+        {
+            "messages": [
+                {
+                    "messaging_type": "RESPONSE",
+                    "message": {
+                        "attachment": {
+                        "type": "template",
+                        "payload": {
+                            "template_type": "list",
+                            "top_element_style": "compact",
+                            "elements": [
+                            {
+                                "title": "items",
+                                "image_url": "https://botme.s3.us-east-2.amazonaws.com/97be98a71165c090f58a086c76b5b684.png",
+                                "subtitle": "items subtitle",
+                                "buttons": [],
+                                "default_action": {
+                                "type": "web_url",
+                                "url": "http://botme.com"
+                                }
+                            },
+                            {
+                                "title": "item #1",
+                                "image_url": "https://botme.s3.us-east-2.amazonaws.com/5debf7d574bece17d8fa45748eb4194c.png",
+                                "subtitle": "item #1 subtitle",
+                                "buttons": [
+                                {
+                                    "title": "item #1 button #1",
+                                    "type": "web_url",
+                                    "url": "http://shops.botme.com"
+                                }
+                                ],
+                                "default_action": {
+                                "type": "web_url",
+                                "url": "http://botme.com"
+                                }
+                            },
+                            {
+                                "title": "item #2",
+                                "image_url": "https://botme.s3.us-east-2.amazonaws.com/73374ff7fa208177bc50f68bfa0ff6e4.png",
+                                "subtitle": "item #2subtitle",
+                                "buttons": [
+                                {
+                                    "title": "item #2 button #1",
+                                    "type": "web_url",
+                                    "url": "http://shops.botme.com"
+                                }
+                                ],
+                                "default_action": {
+                                "type": "web_url",
+                                "url": "http://botme.com"
+                                }
+                            }
+                            ],
+                            "buttons": []
+                        }
+                        }
+                    },
+                    "typing": 0
+                }
+            ]
+        }
+
+    .. rubric:: Sending quick replies
+
+    Use this JSON to add quick replies to your responses. Quick replies are limited to 11 items per message.
+
+    .. code-block::
+
+        {
+            messages: [
+                {
+                message: {
+                    text: "Hello this is a text with quickreply",
+                    quick_replies: [
+                    {
+                        content_type: "text",
+                        title: "quickreply #1",
+                        payload: {
+                            payload: {
+                            type: "quick_reply",
+                            custom_attribute: null,
+                            value: "quickreply #1"
+                            },
+                            button_type: "quick_reply",
+                        }
+                    },
+                    {
+                        content_type: "text",
+                        title: "quickreply #2",
+                        payload: {
+                            payload: {
+                                type: "quick_reply",
+                                custom_attribute: null,
+                                value: "quickreply #2"
+                            },
+                            button_type: "quick_reply"
+                        }
+                    }
+                    ]
+                }
+                }
+            ]
+        }
+        
+    .. rubric:: Sending multiple messages
+        
+    You Can compine multiple messages but passing messages inside the ``messages`` array  
+
+    .. code-block::
+
+        {
+            "messages" : [
+                {
+                    "message": {
+                        "text": "Hello Botme"
+                    }
+                },
+                {
+                    "message": {
+                        "text": "Hello again"
+                    }
+                },
+                {
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "media",
+                                "elements": [
+                                    {
+                                        "media_type": "image",
+                                        "url": "https://picsum.photos/200/300"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }

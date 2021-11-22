@@ -86,6 +86,7 @@ html_theme = 'alabaster'
 #
 html_theme_options = {
     'logo': 'images/botme-logo.png',
+    'touch_icon': 'images/favicon.ico'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
